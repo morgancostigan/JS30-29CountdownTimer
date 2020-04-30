@@ -1,5 +1,6 @@
 let countdown;
 const timerDisplay = document.querySelector('.display__time-left'); //timer on the DOM
+const endTimeDisplay = document.querySelector('.display__end-time'); //end time on the DOM
  
 
 
@@ -17,6 +18,7 @@ function timer(seconds) {
         }//end IF
         // vvv display vvv
         displayTimeLeft(secondsLeft); //to show time remaining
+        displayEndTime(then);
         
     }, 1000);//end setInterval
     
@@ -36,5 +38,10 @@ function displayTimeLeft(seconds) {
     timerDisplay.textContent = display; //updates the DOM
     
 }//end displayTimeLeft function
+
+function displayEndTime(timestamp) {
+    const end = new Date(timestamp); //sets the endtime in a Date format 
+    endTimeDisplay.textContent = end;
+}//end displayEndTime function 
 
 
