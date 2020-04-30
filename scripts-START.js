@@ -6,6 +6,9 @@ const buttons = document.querySelectorAll('[data-time]'); //selects all the elem
 
 
 function timer(seconds) {
+    
+    clearInterval(countdown);// clear any existing timers
+
     const now = Date.now();
     const then = now + seconds * 1000; //now is in milliseconds, hence the *1000
     // console.log({now, then });
@@ -50,10 +53,7 @@ function displayEndTime(timestamp) {
 function startTimer() {
     // console.log(this);
     const seconds = parseInt(this.dataset.time);
-    console.log(seconds);
-    
-    
-    
+    timer(seconds); //starts timer based on the button clicked
 }//end startTimer function
 
 buttons.forEach(button => button.addEventListener('click', startTimer)); //run startTimer each time a button is clicked 
