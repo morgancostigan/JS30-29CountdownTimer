@@ -21,7 +21,15 @@ function timer(seconds) {
 };//end timer function
 
 function displayTimeLeft(seconds) {
-    console.log(seconds);
+    let secondsLeft = seconds
+
+    const hours = Math.floor(seconds / 3600); //Math.floor cuts off anything after a decimal
+    seconds = seconds % 3600; //% is 'mod' or 'modulus', gives you the remainder
+
+    const minutes = Math.floor(seconds / 60);
+    seconds = seconds % 60;
+
+    console.log({ hours, minutes, seconds});
     
 }//end displayTimeLeft function
 
