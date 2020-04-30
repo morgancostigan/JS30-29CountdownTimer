@@ -1,6 +1,7 @@
 let countdown;
 const timerDisplay = document.querySelector('.display__time-left'); //timer on the DOM
 const endTimeDisplay = document.querySelector('.display__end-time'); //end time on the DOM
+const buttons = document.querySelectorAll('[data-time]'); //selects all the elements from the HTML with the data-time attribute 
  
 
 
@@ -9,6 +10,7 @@ function timer(seconds) {
     const then = now + seconds * 1000; //now is in milliseconds, hence the *1000
     // console.log({now, then });
     displayTimeLeft(seconds);//to show initial time
+    displayEndTime(then);
     countdown = setInterval(() => {
         const secondsLeft = Math.round((then - Date.now()) / 1000); //dividing by milliseconds to get seconds rounded to the second
         // vvv check if we should stop the function vvv
@@ -18,7 +20,6 @@ function timer(seconds) {
         }//end IF
         // vvv display vvv
         displayTimeLeft(secondsLeft); //to show time remaining
-        displayEndTime(then);
         
     }, 1000);//end setInterval
     
@@ -41,7 +42,20 @@ function displayTimeLeft(seconds) {
 
 function displayEndTime(timestamp) {
     const end = new Date(timestamp); //sets the endtime in a Date format 
-    endTimeDisplay.textContent = end;
+    const hour = end.getHours(); 
+    const minute = end.getMinutes();
+    endTimeDisplay.textContent = `Ends at ${hour > 12 ? hour - 12 : hour}:${minute < 10 ? '0' : ''}${minute}`;
 }//end displayEndTime function 
+
+function startTimer() {
+    // console.log(this);
+    const seconds = parseInt(this.dataset.time);
+    console.log(seconds);
+    
+    
+    
+}//end startTimer function
+
+buttons.forEach(button => button.addEventListener('click', startTimer)); //run startTimer each time a button is clicked 
 
 
