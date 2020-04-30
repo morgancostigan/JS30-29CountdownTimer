@@ -32,7 +32,8 @@ function displayTimeLeft(seconds) {
     seconds = seconds % 60;
 
     const display = `${hours}:${minutes < 10 ? '0' : ''}${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
-    timerDisplay.textContent = display;
+    document.title = display; //updates the text on the window tab
+    timerDisplay.textContent = display; //updates the DOM
     
 }//end displayTimeLeft function
 
