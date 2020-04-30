@@ -57,5 +57,13 @@ function startTimer() {
 }//end startTimer function
 
 buttons.forEach(button => button.addEventListener('click', startTimer)); //run startTimer each time a button is clicked 
+document.customForm.addEventListener('submit', function (e) {
+    e.preventDefault();//prevents page reload 
+    const mins = this.minutes.value;
+    console.log(mins);
+    timer(mins * 60);
+    this.reset(); //clears form
+    
+});
 
 
